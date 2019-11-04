@@ -1,0 +1,178 @@
+<h3>Update Vendor & its Contact Details</h3>
+<div [hidden]="submitted" style="width: 400px ;">
+
+    <form [formGroup]="angForm"  novalidate (ngSubmit)="onSubmit()" >
+        <!-- Vendor name -->
+
+          <div class="form-group">
+            <label for= "name"> Vendor Name</label>
+            <input type="text" class="form-control"  formControlName="vName" 
+            #VName  [(ngModel)]="vendor.vName"/>
+
+            </div>
+
+        <div *ngIf="angForm.controls['vName'].invalid && (angForm.controls['vName'].dirty || angForm.controls['vName'].touched)" class="alert alert-danger">
+            <div *ngIf="angForm.controls['vName'].errors.required">
+            Vendor Name is required.
+            </div>
+        </div>
+      
+        <!-- Vendor Address -->
+      
+        <div class="form-group">
+            <label for= "name"> Vendor Address</label>
+            <input type="text" ng-value="Supplier" class="form-control"  formControlName="vAddr" 
+            #vAddr [(ngModel)]="vendor.vAddr"/>
+
+        </div>
+      
+        <div *ngIf="angForm.controls['vAddr'].invalid && (angForm.controls['vAddr'].dirty || angForm.controls['vAddr'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['vAddr'].errors.required">
+             Vendor Address is required.
+        </div>
+    </div>
+    
+      
+      
+      
+      
+       <!--Vendor Location -->
+
+        <div class="form-group">
+                <label for= "name"> Vendor Location</label>
+               <br>
+               <select formControlName="vLoc" class="form-control" required [(ngModel)]="vendor.vLoc">
+                <option value="" disabled>Select one</option>
+                <option value="Trivandrum"> Trivandrum</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Bangalore">Bangalore</option>
+        </select>
+            
+        </div>
+        
+        <div *ngIf="angForm.controls['vLoc'].invalid && (angForm.controls['vLoc'].dirty || angForm.controls['vLoc'].touched)" class="alert alert-danger">
+                <div *ngIf="angForm.controls['vLoc'].errors.required">
+                 Vendor Location is required.
+                </div>
+         </div>
+
+
+            <!--Vendor Services-->
+
+            <div class="form-group">
+                    <label for= "name"> Vendor Service</label>
+                <br>
+                <select formControlName="vSer" class="form-control" required [(ngModel)]="vendor.vSer">
+                    <option value="" disabled>Select one</option>
+                    <option value="Soft-skill Training">Soft-skill Training</option>
+                    <option value="Technology Training">Technology Training</option>
+                    <option value="Management Training">Management Training</option>
+                    <option value="Training Facility">Training Facility</option>
+            </select>
+            </div>
+
+            <div *ngIf="angForm.controls['vSer'].invalid && (angForm.controls['vSer'].dirty || angForm.controls['vSer'].touched)" class="alert alert-danger">
+                    <div *ngIf="angForm.controls['vSer'].errors.required">
+                    Service is required.
+                    </div>
+            </div>
+
+
+            <!-- Pincode-->
+            <div class="form-group">
+                <label for="name">Pincode</label>
+                <br>
+                <input type="text" class="form-control"  formControlName="vPin" 
+                #vPin  [(ngModel)]="vendor.vPin" />
+
+
+            </div>
+
+            <div *ngIf="angForm.controls['vPin'].invalid && (angForm.controls['vPin'].dirty || angForm.controls['vPin'].touched)" class="alert alert-danger">
+                    <div *ngIf="angForm.controls['vPin'].errors.required">
+                     Pincode is mandatory.
+                    </div>
+            </div>
+
+
+            <h3>Update Contact Details</h3>
+
+             <!-- Contact Name-->
+             <div class="form-group">
+                    <label for="name"> Customer Name</label>
+                    <br>
+                    <input type="text" class="form-control"  formControlName="cName" 
+                    #cName  [(ngModel)]="vendor.cName" />
+    
+    
+                </div>
+    
+                <div *ngIf="angForm.controls['cName'].invalid && (angForm.controls['cName'].dirty || angForm.controls['cName'].touched)" class="alert alert-danger">
+                        <div *ngIf="angForm.controls['cName'].errors.required">
+                         Customer Name is mandatory.
+                        </div>
+                </div>
+
+                <!-- Contact Department -->
+                <div class="form-group">
+                    <label for="name"> Department </label>
+                    <input type="text" class="form-control" formControlName="cDept"required #cDept [(ngModel)]="vendor.cDept"/>
+
+                </div>
+
+                <div *ngIf="angForm.controls['cDept'].invalid && (angForm.controls['cDept'].dirty || angForm.controls['cDept'].touched)" class="alert alert-danger">
+                        <div *ngIf="angForm.controls['cDept'].errors.required">
+                         Department is mandatory.
+                        </div>
+                </div>
+
+
+                <!-- Email -->
+                <div class="form-group">
+                    <label for="name"> Email </label>
+                    <input type="email" class="form-control" formControlName="cEmail"required #cEmail  [(ngModel)]="vendor.cEmail"/>
+
+                </div>
+
+                <div *ngIf="angForm.controls['cEmail'].invalid && (angForm.controls['cEmail'].dirty || angForm.controls['cEmail'].touched)" class="alert alert-danger">
+                        <div *ngIf="angForm.controls['cEmail'].errors.required">
+                         Email is mandatory.
+                        </div>
+                </div>
+
+
+                 <!-- Phone -->
+                 <div class="form-group">
+                    <label for="name"> Phone </label>
+                    <input type="text" class="form-control" formControlName="cPhone"required #cPhone [(ngModel)]="vendor.cPhone"/>
+
+                </div>
+
+                <div *ngIf="angForm.controls['cPhone'].invalid && (angForm.controls['cPhone'].dirty || angForm.controls['cPhone'].touched)" class="alert alert-danger">
+                        <div *ngIf="angForm.controls['cPhone'].errors.required">
+                         Phone is mandatory.
+                        </div>
+                </div>
+            
+
+        
+            <!-- submit -->
+
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary" >
+                  Update
+                </button>
+            </div>
+            <!-- <button type ="submit" class="btn btn-success">Submit
+
+            </button> -->
+
+
+     </form>
+
+</div>
+
+
+
+

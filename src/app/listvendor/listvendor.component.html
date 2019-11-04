@@ -1,0 +1,90 @@
+
+<div class="panel panel-primary">
+
+<div class="panel-heading">
+
+        <a routerLink="createvendor" class="btn btn-info" >  Add New Vendor </a>
+        <button type="button" class="btn btn-danger" mwlConfirmationPopover
+        [popoverTitle]="popoverTitle"
+        [popoverMessage]="popoverMessageLogout"
+        placement="right"
+        (confirm)="confirmClicked= true"
+        (cancel)="cancelClicked=true"
+        confirmButtonType="warning"
+        cancelButtonType="info"
+        (click)="confirmClicked= false; cancelClicked=false"[appendToBody]="true" (confirm)="logout()" style="margin-left:800px">Logout</button>
+        
+        
+
+
+</div>
+
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <div style="text-align:center">
+        <h2>Vendor Contact List</h2>
+    </div>
+        <!-- search  -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="container input-group md-form form-sm form-1 pl-0" style="width:400px;">
+    <div class="input-group-prepend">
+      <span class="input-group-text cyan lighten-2" id="basic-text1"><i class="fa fa-search"
+          aria-hidden="true"></i></span>
+    </div>
+    <input class="form-control my-0 py-1" type="text" placeholder="Search by name/location/service..."  [(ngModel)]="searchString" (ngModelChange)="search(searchString)"aria-label="Search">
+   <button (click)="search(searchString)" class="btn-info">Search</button>
+  </div>
+<!-- search -->
+       
+    </div>
+    <div class="panel-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>V.Id</th>
+                    <th>Vendor Name </th>
+                    <th>Vendor Location</th>
+                    <th>V Services</th>
+                    <th>C Name</th>
+                    <th>C Dept</th>
+                    <th>C Phone</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let vendor of vendors | async  | paginate: { itemsPerPage: 10, currentPage: p }; let i = index">
+                    <td>{{vendor.vId}}</td>
+                    <td>{{vendor.vName}}</td>
+                    <td>{{vendor.vLoc}}</td>
+                    <td>{{vendor.vSer}}</td>
+                    <td>{{vendor.cName}}</td>
+                    <td>{{vendor.cDept}}</td>
+                    <td>{{vendor.cPhone}}</td>
+                   
+                    <td>
+                             <button (click)="vendorUpdate(vendor.vId)" class="btn btn-info" style="margin-left: 10px">Update</button> 
+                        <!-- <button (click)="vendorDetails(vendor.vId)" class="btn btn-info" style="margin-left: 10px">Details</button> -->
+                          <button (click)="vendorDelete(vendor.vId)" class="btn btn-danger"      
+                         mwlConfirmationPopover
+                        [popoverTitle]="popoverDeleteTitle"
+                        [popoverMessage]="popoverDeleteMessage"
+                        placement="left"
+                        (confirm)="confirmClicked= true"
+                        (cancel)="cancelClicked=true"
+                        confirmButtonType="warning"
+                        cancelButtonType="info"  (click)="confirmClicked= false; cancelClicked=false"[appendToBody]="true" (confirm)="deleteVendor(vendor.vId)" style="margin-left:10px">Delete</button> 
+                  
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+      <!-- pagination -->
+      <div style="margin-left: 250px;">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </div>
+<!-- pagination -->
+</div>
